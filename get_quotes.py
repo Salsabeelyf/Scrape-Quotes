@@ -1,8 +1,12 @@
-from urllib.request import urlopen
+import requests
 
 url = "http://quotes.toscrape.com/"
 
-with urlopen(url) as response:
-    print(response.status)
-    content = response.read()
-    print(content.decode("utf-8"))
+response = requests.get(url)
+
+print(response.status_code)
+print(response.headers)
+
+content = response.content
+
+print(content.decode("utf-8"))
